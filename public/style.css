@@ -1,0 +1,186 @@
+:root {
+  --bg: #f4f7fc;
+  --panel: #ffffff;
+  --text: #162033;
+  --muted: #67748a;
+  --border: #d9e1ec;
+  --primary: #1f6feb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.hidden {
+  display: none;
+}
+
+.login-panel {
+  width: min(460px, 92vw);
+  margin: 48px auto;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+label,
+input,
+select,
+button {
+  display: block;
+  width: 100%;
+}
+
+input,
+select,
+button {
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.map-wrap {
+  position: relative;
+}
+
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 10px 0 0;
+}
+
+.chat-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  height: 220px;
+  overflow-y: auto;
+}
+
+.chat-log li {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.chat-log li:last-child {
+  border-bottom: none;
+}
+
+.chat-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-form input {
+  margin-top: 0;
+}
+
+.chat-form button {
+  margin-top: 0;
+  width: auto;
+}
+
+.legend {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.legend h3 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #111;
+  flex-shrink: 0;
+}
+
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .sidebar {
+    max-height: 48vh;
+  }
+
+  #map {
+    height: 52vh;
+  }
+}

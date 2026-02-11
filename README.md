@@ -1,99 +1,54 @@
-Here’s a ready-to-deploy simple game site folder structure and files:
+# CycleConnect Realtime (Git-ready)
 
----
+A realtime cycling room app where riders can:
+- log in with a **fixed, persistent color**,
+- join rooms,
+- share live location on a map,
+- chat in realtime,
+- and draw reroute lines (you → cyclist → destination).
 
-**Folder Structure:**
-my-game-site/
-├── index.html
-├── style.css
-└── script.js
+## Tech stack
+- Node.js + Express
+- Socket.IO
+- SQLite (`data/cycleconnect.db` at runtime)
+- Leaflet + OpenStreetMap tiles
 
----
+## Run locally
+```bash
+npm install
+npm start
+```
+Then open: `http://localhost:3000`
 
-**index.html**
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Game Site</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Game Site!</h1>
-    </header>
+## Git workflow ("turn into git code")
+If you want to push this project to your own GitHub repo:
 
-    <main>
-        <p>Play fun games right here!</p>
-        <div class="games">
-            <button onclick="playGame('Game 1')">Game 1</button>
-            <button onclick="playGame('Game 2')">Game 2</button>
-        </div>
-    </main>
+```bash
+# in project folder
 
-    <footer>
-        <p>&copy; 2025 My Game Site</p>
-    </footer>
+git init
+git add .
+git commit -m "Initial CycleConnect realtime app"
 
-    <script src="script.js"></script>
-</body>
-</html>
+git branch -M main
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git push -u origin main
 ```
 
----
+If this repo already exists and you just want to add updates:
 
-**style.css**
-```css
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #ff6600;
-    color: white;
-    padding: 20px;
-}
-
-main {
-    margin: 20px;
-}
-
-games button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
+```bash
+git add .
+git commit -m "Update CycleConnect features"
+git push
 ```
 
----
+## Main files
+- `server.js` — API + Socket.IO events + room state + persistence logic.
+- `public/index.html` — login, room controls, chat, reroute panel, map layout.
+- `public/script.js` — realtime location/chat/map updates and reroute drawing.
+- `public/style.css` — responsive UI styling and cyclist legend placement.
 
-**script.js**
-```javascript
-function playGame(gameName) {
-    alert(`Starting ${gameName}!`);
-}
-```
-
----
-
-**Instructions to Deploy:**
-1. Upload the entire `my-game-site` folder to a GitHub repository.
-2. Sign in to Netlify and click **"Add new site" → "Import from GitHub"**.
-3. Connect your repository and click **Deploy**.
-4. Netlify will give you a free URL like `my-game-site.netlify.app`. You’re live!
+## Notes
+- Cyclist color is fixed by username via SQLite.
+- The local DB file is ignored from git (`.gitignore`).

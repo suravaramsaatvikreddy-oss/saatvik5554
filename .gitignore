@@ -32,3 +32,8 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Node app artifacts
+node_modules/
+data/*.db
+data/*.sqlite
