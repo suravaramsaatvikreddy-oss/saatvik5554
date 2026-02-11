@@ -10,6 +10,7 @@ const io = new Server(server);
 
 const PORT = process.env.PORT || 3000;
 const dbPath = path.join(__dirname, 'data', 'cycleconnect.db');
+require('fs').mkdirSync(path.dirname(dbPath), { recursive: true });
 const db = new sqlite3.Database(dbPath);
 
 const rooms = new Map();
