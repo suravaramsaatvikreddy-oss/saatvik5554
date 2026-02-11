@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CycleConnect Rooms</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loginPanel" class="panel login-panel">
+    <h1>🚴 CycleConnect</h1>
+    <p>Login once. Your cyclist color is saved permanently in the system database.</p>
+    <form id="loginForm">
+      <input id="nameInput" type="text" placeholder="Cyclist name" required />
+      <label for="colorInput">Choose your fixed map color:</label>
+      <input id="colorInput" type="color" value="#1f6feb" required />
+      <button type="submit">Login / Continue</button>
+    </form>
+    <p id="loginStatus" class="hint"></p>
+  </div>
+
+  <div class="layout hidden" id="appLayout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Room</h2>
+        <input id="roomInput" type="text" placeholder="Room name" />
+        <button id="joinRoomBtn">Join Room</button>
+        <p id="roomStatus" class="hint">Join a room to start realtime tracking.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Realtime Chat</h2>
+        <ul id="chatLog" class="chat-log"></ul>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" maxlength="300" placeholder="Type message..." required />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Reroute</h2>
+        <label for="cyclistSelect">Cyclist</label>
+        <select id="cyclistSelect"></select>
+        <label for="destinationInput">Destination (lat,lng)</label>
+        <input id="destinationInput" type="text" placeholder="e.g. 12.9716,77.5946" />
+        <button id="rerouteBtn">Reroute to Cyclist + Destination</button>
+      </section>
+    </aside>
+
+    <main class="map-wrap">
+      <div id="map"></div>
+      <div id="legend" class="legend">
+        <h3>Cyclist Index</h3>
+        <ul id="legendList"></ul>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
