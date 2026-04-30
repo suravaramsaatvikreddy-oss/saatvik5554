@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision IQ</title>
+    <meta
+      name="description"
+      content="Vision IQ: Real-time AI scene narration with Normal and Blind Edition modes."
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Vision IQ</h1>
+      <p class="subtitle">AI-powered instant scene narration</p>
+    </header>
+
+    <main class="container">
+      <section class="card controls" aria-label="Application controls">
+        <div class="row">
+          <label for="mode">Interface Mode</label>
+          <select id="mode" aria-label="Select interface mode">
+            <option value="normal">Normal Version</option>
+            <option value="blind">Blind Edition (Shadow Art)</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label class="toggle">
+            <input type="checkbox" id="alwaysOn" />
+            <span>Enable Always-On Narration</span>
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button id="startBtn">Start Camera</button>
+          <button id="analyzeBtn">Analyze Scene</button>
+          <button id="speakBtn">Read Last Result</button>
+        </div>
+      </section>
+
+      <section class="card live" aria-label="Live camera and results">
+        <video id="preview" playsinline autoplay muted></video>
+        <p id="status" class="status">Camera idle.</p>
+        <h2>Scene Narration</h2>
+        <p id="result">No analysis yet.</p>
+      </section>
+
+      <section class="card config" aria-label="API configuration">
+        <h2>AlphaBrain API</h2>
+        <label for="apiUrl">Endpoint URL</label>
+        <input
+          id="apiUrl"
+          type="url"
+          placeholder="https://api.alphabrain.example/v1/vision/analyze"
+        />
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" type="password" placeholder="Paste API key" />
+        <p class="hint">
+          API settings are stored locally on device to support quick restart flows.
+        </p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Designed for modern and legacy-friendly web runtime support.</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
